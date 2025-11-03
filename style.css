@@ -1,0 +1,65 @@
+/* Stile base per la pagina */
+html,
+body {
+    height: 100%;
+    /*overflow: hidden;*/
+    font-family: 'Inter', sans-serif;
+}
+
+/* Stile per la timeline */
+#timeline-container {
+    height: calc(100vh - 80px);     /* Altezza meno header */
+    width: 100%;
+    
+}
+
+/* Stile per gli eventi */
+.vis-item.event-item {
+    background-color: #3b82f6;
+    border-color: #2563eb;
+    color: white;
+    border-radius: 10px;
+    /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);*/
+    transition: background-color 0.3s ease;
+}
+
+/* Stile per la linea rossa dell'ora attuale */
+.vis-current-time {
+    width: 2px;
+    background-color: #ef4444;
+    z-index: 99;
+}
+
+.vis-labelset {
+    width: 200px;
+}
+
+@media (max-width: 640px) {
+    .vis-labelset {
+        width: 120px;
+    }
+}
+ 
+/* Modal */
+.modal-hidden {
+    display: none;
+}
+
+.vis-item.event-item:hover {
+    background-color: #08a710;
+}
+
+/* Evento evidenziato dal filtro track */
+.vis-item.event-highlighted {
+    background-color: #f97316;
+    border-color: #ea580c;
+}
+
+/* Evento attualmente attivo */
+.vis-item.event-active {
+    background-color: #d946ef;
+}
+
+.vis-time-axis.vis-text {
+    color: #374151;
+}

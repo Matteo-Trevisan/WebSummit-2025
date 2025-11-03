@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSummit 2025 | Events Timeline</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/customParseFormat.min.js"></script>
+    
+    <script src="https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link href="https://visjs.github.io/vis-timeline/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <header class="h-[80px] bg-white shadow-sm flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <div>
+            <h1 class="text-md sm:text-2xl font-bold text-gray-900">WebSummit 2025</h1>
+            <p class="text-sm text-gray-500">Events Timeline</p>
+        </div>
+        <div class="flex items-start flex-col">
+            <p class="text-sm text-gray-500 pl-3">Filter by track</p>
+            <div id="track-filter-container" class="hidden">
+                <label for="track-filter" class="sr-only">Filter by track</label>
+                <select id="track-filter" name="track-filter" class="block w-full pl-3 pr-8 py-2 text-base border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                    <!-- Options verranno popolate da JS -->
+                </select>
+            </div>
+            <div id="loading" class="flex items-center space-x-2">
+                <svg class="animate-spin h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span class="text-gray-600">Events loading...</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="timeline-container"></div>
+    </main>
+
+    <div id="event-modal" class="modal-hidden fixed inset-0 z-[110] overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            
+            <div id="modal-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+            
+            <div class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-center p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
+                    <h2 id="modal-title" class="text-xl font-bold text-gray-900">Dettagli Evento</h2>
+                    <button id="modal-close" class="text-gray-400 hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="p-6 space-y-4">
+                    <div>
+                        <p id="modal-time" class="text-sm font-medium text-emerald-800"></p>
+                        <p id="modal-location" class="text-sm text-gray-500 mt-1 px-2 py-1"></p>
+                        <p id="modal-track" class="mt-1 text-xs font-semibold uppercase tracking-wider text-gray-600 bg-gray-100 inline-block px-2 py-1 rounded"></p>
+                    </div>
+                    
+                    <p id="modal-description" class="text-base text-gray-700 leading-relaxed"></p>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Speakers</h3>
+                        <div id="modal-speakers" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
