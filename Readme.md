@@ -2,7 +2,7 @@
 
 This project provides an interactive and user-friendly timeline for all official events at WebSummit 2025. Built to offer a clearer, more organized view of the conference schedule, it allows attendees to easily browse, filter, and explore talks, masterclasses, and meetups.
 
-**[➡️ View the Live Demo Here]()**
+**[➡️ View the Live Demo Here](https://matteo-trevisan.github.io/WebSummit-2025/)**
 
 ---
 
